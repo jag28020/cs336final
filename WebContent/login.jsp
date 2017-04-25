@@ -20,7 +20,7 @@
 		Class.forName("com.mysql.jdbc.Driver");
 
 		//Create a connection to your DB
-		Connection con = DriverManager.getConnection(url, "jag583", "cs336final");
+		Connection con = DriverManager.getConnection(url, "jag583", "cs336final"); 
 
 		//Create a SQL statement
 		Statement stmt = con.createStatement();
