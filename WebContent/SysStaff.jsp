@@ -15,6 +15,14 @@
 				<h3>User Info</h3>
 				<form method="post" action="update.jsp">
 					<div class="form-group">
+						<label for="username">Username to change</label>
+						<input type="text" class="form-control" id="ouUsername" name="ouUsername" placeholder="oldUsername">
+					</div>
+					<div class="form-group">
+						<label for="username">New Username</label>
+						<input type="text" class="form-control" id="uEmail" name="uEmail" placeholder="email">
+					</div>
+					<div class="form-group">
 						<label for="ru_email">Rutgers Email</label>
 						<input type="text" class="form-control" id="uEmail" name="uEmail" placeholder="email">
 					</div>
@@ -23,7 +31,7 @@
 						<input type="text" class="form-control" id="uName" name="uName" placeholder="Name">
 					</div>
 					<div class="form-group">
-						<label for="name">Phone</label>
+						<label for="phone">Phone</label>
 						<input type="text" class="form-control" id="uName" name="uName" placeholder="Phone">
 					</div>
 					<input type="submit" class="btn btn-default">

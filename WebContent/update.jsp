@@ -27,8 +27,7 @@
 		String phone=request.getParameter("uPhone");
 		
 		//query//
-		String update="UPDATE users SET users.ru_email="+RUEmail+"users.name="+name+"users.phone";
-		PreparedStatement ps=con.p
+		String str="UPDATE ";
 	}
 	%>
 </body>
