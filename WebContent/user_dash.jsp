@@ -25,7 +25,7 @@
 					</div>
 					<div class="form-group">
 						<label for="name">Phone</label>
-						<input type="text" class="form-control" id="uName" name="uName" placeholder="Phone">
+						<input type="text" class="form-control" id="uPhone" name="uPhone" placeholder="Phone">
 					</div>
 					<input type="submit" class="btn btn-default">
 					<br/><br/>
