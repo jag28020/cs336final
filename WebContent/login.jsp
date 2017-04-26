@@ -30,8 +30,8 @@
 		String password = request.getParameter("lPassword");
 
 		//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
-		String str = "SELECT COUNT(*) as cnt FROM users WHERE username = '"+username+"' AND password = '"+password+"' AND ru_email='"+email+"'";
-
+		String str = "SELECT COUNT(*) as cnt FROM users WHERE username = '" +username+ "' AND password = '" +password+ "' AND ru_email='" +email+ "'";
+		
 		//Run the query against the DB
 		ResultSet result = stmt.executeQuery(str);
 		
