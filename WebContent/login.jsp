@@ -44,9 +44,8 @@
 		
 		if (countUsers==0)
 			out.print("<h2>Login Failed</h2>");
-		else
-			
-			//out.print("<h2>Login Succeeded!</h2>");
+		else			
+			out.print("<h2>Login Succeeded!</h2>");
 		
 
 	} catch (Exception ex) {
