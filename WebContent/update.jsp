@@ -31,7 +31,7 @@
 		String username = session.getAttribute("username").toString();
 		
 		//query//
-		String str="UPDATE users SET users.name='"+name+"', users.ru_email='"+RUEmail+"', users.phone='"+phone+"' WHERE users.username='"+username"'";
+		String str="UPDATE users SET users.name='"+name+"', users.ru_email='"+RUEmail+"', users.phone='"+phone+"' WHERE users.username='"+username+"'";
 		
 		//Run query against DB//
 		int result = stmt.executeUpdate(str);
