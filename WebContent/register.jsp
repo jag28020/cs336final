@@ -37,17 +37,20 @@
 		int countUsers = result.getInt("cnt");
 
 		String username = request.getParameter("rUsername");
+		String email = request.getParameter("rEmail");
 		String password = request.getParameter("rPassword");
 
 		//Make an insert statement for the Sells table:
-		String insert = "INSERT INTO users(username, password)"
-				+ "VALUES (?, ?)";
+		String insert = "INSERT INTO users(username, ru_email, password)"
+				+ "VALUES (?, ?, ?)";
 		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 		PreparedStatement ps = con.prepareStatement(insert);
 
 		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
 		ps.setString(1, username);
-		ps.setString(2, password);
+		ps.setString(2, email);
+		ps.setString(3, password);
+
 		//Run the query against the DB
 		ps.executeUpdate();
 		
@@ -70,6 +73,7 @@
 		else{
 			out.print("<h2>Registration Succeeded!</h2>");
 			session.setAttribute("username", username);
+			response.sendRedirect("user_dash.jsp");
 
 		}
 		

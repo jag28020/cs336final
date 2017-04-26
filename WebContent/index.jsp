@@ -12,6 +12,15 @@
 <title>Choose Login or Register</title>
 </head>
 <body>
+	<%
+		try {
+			if (session.getAttribute("username").toString().length() > 0)
+				response.sendRedirect("user_dash.jsp");
+		}
+		catch (Exception e) {
+			
+		}
+	%>
 	<div class="container">
 		<h1>Ride Sharing Service </h1>
 		<br>
@@ -22,6 +31,10 @@
 					<div class="form-group">
 				    	<label for="username">Username</label>
 				    	<input type="text" class="form-control" id="lUsername" name="lUsername" placeholder="Username">
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="email">RU Email</label>
+				    	<input type="text" class="form-control" id="lEmail" name="lEmail" placeholder="RU Email">
 				  	</div>
 				  	<div class="form-group">
 				    	<label for="password">Password</label>
@@ -37,6 +50,10 @@
 					<div class="form-group">
 				    	<label for="username">Username</label>
 				    	<input type="text" class="form-control" id="rUsername" name="rUsername" placeholder="Username">
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="email">RU Email</label>
+				    	<input type="text" class="form-control" id="rEmail" name="rEmail" placeholder="RU Email">
 				  	</div>
 				  	<div class="form-group">
 				    	<label for="password">Password</label>

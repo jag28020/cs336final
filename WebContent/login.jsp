@@ -26,10 +26,11 @@
 		Statement stmt = con.createStatement();
 
 		String username = request.getParameter("lUsername");
+		String email = request.getParameter("lEmail");
 		String password = request.getParameter("lPassword");
 
 		//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
-		String str = "SELECT COUNT(*) as cnt FROM users WHERE username = '"+username+"' AND password = '"+password+"'";
+		String str = "SELECT COUNT(*) as cnt FROM users WHERE username = '"+username+"' AND password = '"+password+"' AND ru_email='"+email+"'";
 
 		//Run the query against the DB
 		ResultSet result = stmt.executeQuery(str);
@@ -42,8 +43,10 @@
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
 		
-		if (countUsers==0)
-			out.print("<h2>Login Failed</h2>");
+		if (countUsers==0){
+			out.print("<h2>Login Failed. Redirecting</h2>");
+			response.sendRedirect("index.jsp");
+		}
 		else{			
 			out.print("<h2>Login Succeeded!</h2>");
 			session.setAttribute("username", username);
