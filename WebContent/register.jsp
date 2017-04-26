@@ -67,8 +67,11 @@
 		
 		if (countUsers==newCount)
 			out.print("<h2>Registration Failed</h2>");
-		else
+		else{
 			out.print("<h2>Registration Succeeded!</h2>");
+			session.setAttribute("username", username);
+
+		}
 		
 
 	} catch (Exception ex) {

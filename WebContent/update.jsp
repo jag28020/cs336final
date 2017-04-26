@@ -28,6 +28,7 @@
 		String RUEmail=request.getParameter("uEmail");
 		String name=request.getParameter("uName");
 		String phone=request.getParameter("uPhone");
+		String username = session.getAttribute("username")
 		
 		//query//
 		String str="UPDATE ";

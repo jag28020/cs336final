@@ -44,8 +44,11 @@
 		
 		if (countUsers==0)
 			out.print("<h2>Login Failed</h2>");
-		else			
+		else{			
 			out.print("<h2>Login Succeeded!</h2>");
+			session.setAttribute("username", username);
+			response.sendRedirect("user_dash.jsp");
+		}
 		
 
 	} catch (Exception ex) {
