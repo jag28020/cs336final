@@ -12,22 +12,13 @@
 <title>Choose Login or Register</title>
 </head>
 <body>
-	<%
-		try {
-			if (session.getAttribute("username").toString().length() > 0)
-				response.sendRedirect("user_dash.jsp");
-		}
-		catch (Exception e) {
-			
-		}
-	%>
 	<div class="container">
 		<h1>Ride Sharing Service </h1>
 		<br>
 		<div class="row">
 			<div class="col-md-6">
 				<h3>Login</h3>
-				<form method="post" action="login.jsp">
+				<form method="post" action="processLogin.jsp">
 					<div class="form-group">
 				    	<label for="username">Username</label>
 				    	<input type="text" class="form-control" id="lUsername" name="lUsername" placeholder="Username">
@@ -46,7 +37,7 @@
 			
 			<div class="col-md-6">
 				<h3>Register</h3>
-				<form method="post" action="register.jsp">
+				<form method="post" action="processRegister.jsp">
 					<div class="form-group">
 				    	<label for="username">Username</label>
 				    	<input type="text" class="form-control" id="rUsername" name="rUsername" placeholder="Username">

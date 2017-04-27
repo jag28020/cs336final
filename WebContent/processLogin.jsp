@@ -20,14 +20,18 @@
 		Class.forName("com.mysql.jdbc.Driver");
 
 		//Create a connection to your DB
-		Connection con = DriverManager.getConnection(url, "jag583", "cs336final");
-		
+		Connection con = DriverManager.getConnection(url, "jag583", "cs336final"); 
+
 		//Create a SQL statement
 		Statement stmt = con.createStatement();
 
-		//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
-		String str = "SELECT COUNT(*) as cnt FROM users";
+		String username = request.getParameter("lUsername");
+		String email = request.getParameter("lEmail");
+		String password = request.getParameter("lPassword");
 
+		//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
+		String str = "SELECT COUNT(*) as cnt FROM users WHERE username = '" +username+ "' AND password = '" +password+ "' AND ru_email='" +email+ "'";
+		
 		//Run the query against the DB
 		ResultSet result = stmt.executeQuery(str);
 		
@@ -35,52 +39,40 @@
 		result.next();
 		//Parse out the result of the query
 		int countUsers = result.getInt("cnt");
-
-		String username = request.getParameter("rUsername");
-		String email = request.getParameter("rEmail");
-		String password = request.getParameter("rPassword");
-
-		//Make an insert statement for the Sells table:
-		String insert = "INSERT INTO users(username, ru_email, password)"
-				+ "VALUES (?, ?, ?)";
-		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-		PreparedStatement ps = con.prepareStatement(insert);
-
-		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-		ps.setString(1, username);
-		ps.setString(2, email);
-		ps.setString(3, password);
-
-		//Run the query against the DB
-		ps.executeUpdate();
 		
-		//Check new count
-		str = "SELECT COUNT(*) as cnt FROM users";
-
-		//Run the query against the DB
+		str = "SELECT * FROM users WHERE username = '" +username + "'";
 		result = stmt.executeQuery(str);
-		
-		//Start parsing out the result of the query. Don't forget this statement. It opens up the result set.
 		result.next();
-		//Parse out the result of the query
-		int newCount = result.getInt("cnt");
+		boolean isAdmin = result.getBoolean("isAdmin");
+		boolean isSysStaff = result.getBoolean("isSysStaff");
+		boolean isDisabled = result.getBoolean("isDisabled");
 	
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
 		
-		if (countUsers==newCount)
-			out.print("<h2>Registration Failed</h2>");
-		else{
-			out.print("<h2>Registration Succeeded!</h2>");
+		if (countUsers==0){
+			response.sendRedirect("error.jsp?msg=Invalid login. Please try again.");
+		}
+		else{			
+			out.print("<h2>Login Succeeded!</h2>");
 			session.setAttribute("username", username);
-			response.sendRedirect("user_dash.jsp");
-
+			if (isDisabled){
+				response.sendRedirect("error.jsp?msg=Account Disabled.");
+			}
+			else if (isAdmin){
+				response.sendRedirect("adminDash.jsp");
+			}
+			else if (isSysStaff){
+				response.sendRedirect("sysStaffDash.jsp");
+			}
+			else{
+				response.sendRedirect("userDash.jsp");
+			}
 		}
 		
 
 	} catch (Exception ex) {
-		out.print("insert failed");
-		out.print(ex);
+		response.sendRedirect("error.jsp?msg=" + ex.toString());
 	}
 %>
 </body>

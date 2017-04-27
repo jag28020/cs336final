@@ -36,9 +36,11 @@
 		//Run query against DB//
 		int result = stmt.executeUpdate(str);
 		
+		con.close();
+		response.sendRedirect("userDash.jsp");
+		
 	} catch (Exception ex) {
-		out.print("insert failed");
-		out.print(ex);
+		response.sendRedirect("error.jsp?msg=" + ex.toString());
 	}
 	%>
 </body>
