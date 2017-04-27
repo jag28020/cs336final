@@ -13,6 +13,7 @@
 <body>
 	<div class="container">
 		<h1>System Support Staff Dashboard</h1>
+		<a class="btn btn-default" href="processLogout.jsp">Logout</a>
 		<br>
 		<div class="row">
 			<div class="col-md-6">

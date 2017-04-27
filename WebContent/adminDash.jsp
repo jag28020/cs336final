@@ -15,6 +15,7 @@
 		<a href="index.jsp" class="btn btn-primary" style="margin-top:10px">Home</a>
 		<h1>Admin Dashboard</h1>
 		<br>
+		<a class="btn btn-default" href="processLogout.jsp">Logout</a>
 		<h3>Add New System Support Staff</h3>
 		<form method="POST" action="processNewSysStaff.jsp">
 			<div class="form-group">

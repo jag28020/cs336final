@@ -12,6 +12,7 @@
 <title>Choose Login or Register</title>
 </head>
 <body>
+
 	<div class="container">
 		<h1>Ride Sharing Service </h1>
 		<br>
